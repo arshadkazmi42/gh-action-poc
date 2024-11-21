@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Check target branch
         run: |
+          echo "PoC works"
           if [ ${{ github.event.pull_request.head.repo.fork }} == true ] &&
           [ ${{ github.base_ref }} == 'dev' ] ||
           [ ${{ github.base_ref }} == 'main' ]; then
