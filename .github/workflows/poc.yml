@@ -13,14 +13,6 @@ jobs:
       - name: Check target branch
         run: |
           echo "PoC works"
-          if [ ${{ github.event.pull_request.head.repo.fork }} == true ] &&
-          [ ${{ github.base_ref }} == 'dev' ] ||
-          [ ${{ github.base_ref }} == 'main' ]; then
-
-            echo -e "Hello and thank you for considering contributing to our project! Please note that we do not allow pull requests directly from forks to the dev or main branches of the upstream repository.\n\nIf you would like to contribute changes that target those branches, please create a new branch with a different name in your forked repository and submit a pull request from there. This will help us keep our branches organized and maintain a clean history of contributions.\n\nIf you have any questions or need assistance with this process, please don't hesitate to reach out to us. We appreciate your contributions and look forward to working with you!" > comment
-            export comment=$(cat comment)
-
-            gh pr close ${{ github.event.pull_request.number }} --comment "$comment" --repo ${{ github.repository }}
-          fi
+          sleep 100
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
